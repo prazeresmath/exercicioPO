@@ -12,12 +12,12 @@ def solucao_exata():
     valor_total = 0
     itens_selecionados = []
 
-    problema = LpProblem("Problema da Mochila", LpMaximize)
+    problema = LpProblem('Problema da Mochila', LpMaximize)
 
     pesos = {i: i+1 for i in range(1, 26)}
     valores = {i: 10*i for i in range(1, 26)}
 
-    variaveis = LpVariable.dicts("Item", list(range(1, 26)), 0, 1, LpInteger)    
+    variaveis = LpVariable.dicts('Item', list(range(1, 26)), 0, 1, LpInteger)    
 
     # Função objetivo: soma os valores dos itens
     problema += lpSum([valores[i]*variaveis[i] for i in range(1, 26)])
@@ -29,14 +29,14 @@ def solucao_exata():
     tempo_execucao = time.time() - inicio
 
     print('Método exato:')  
-    print("Status:", LpStatus[problema.status])
+    print('Status:', LpStatus[problema.status])
     for i in range(1, 26):
         if variaveis[i].varValue > 0:
             peso_total += pesos[i]
             valor_total += valores[i]
             itens_selecionados.append(pesos[i])
 
-    print(f"Itens selecionados com otimização: {itens_selecionados}.")
+    print(f'Itens selecionados com otimização: {itens_selecionados}.')
     print(f'Peso total: {peso_total}')
     print(f'Valor total: {valor_total}')
     return peso_total, valor_total, itens_selecionados, tempo_execucao
@@ -61,9 +61,9 @@ def solucao_heuristica():
 
     print('-' * 30)
     print('Heurística:')
-    print("Itens selecionados pela heurística:", itens_selecionados)
-    print("Peso total:", peso_total)
-    print("Valor total:", valor_total)
+    print('Itens selecionados pela heurística:', itens_selecionados)
+    print('Peso total:', peso_total)
+    print('Valor total:', valor_total)
 
     return peso_total, valor_total, itens_selecionados, tempo_execucao
 
@@ -72,8 +72,8 @@ peso_total_heuristica, valor_total_heuristica, itens_selecionados_heuristica, te
 
 print('-' * 30)
 print('Comparação:')
-print("Solução exata:", valor_total_exato)
-print("Solução da heurística:", valor_total_heuristica)
+print('Solução exata: ', valor_total_exato)
+print('Solução da heurística: ', valor_total_heuristica)
 
 print(f'Itens selecionados na solução exata: {itens_selecionados_exatos}')
 print(f'Itens selecionados na heurística: {itens_selecionados_heuristica}')
