@@ -14,9 +14,6 @@ def solucao_exata():
 
     problema = LpProblem('Problema da Mochila', LpMaximize)
 
-    pesos = {i: i+1 for i in range(1, 26)}
-    valores = {i: 10*i for i in range(1, 26)}
-
     variaveis = LpVariable.dicts('Item', list(range(1, 26)), 0, 1, LpInteger)    
 
     # Função objetivo: soma os valores dos itens
