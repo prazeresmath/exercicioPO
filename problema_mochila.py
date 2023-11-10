@@ -26,6 +26,7 @@ def solucao_exata():
     tempo_execucao = time.time() - inicio
 
     print('Método exato:')  
+    print(f'Solver utilizado: {problema.solver}')
     print('Status:', LpStatus[problema.status])
     for i in range(1, 26):
         if variaveis[i].varValue > 0:
